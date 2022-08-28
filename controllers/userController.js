@@ -674,7 +674,7 @@ exports.generatePasswordLink = asyncHandler(async (req, res) => {
     }
 
     const token = jwt.sign(payload, secret, { expiresIn: "15m" })
-    const passwordLink = `${process.env.CLIENT_PROXY}/reset-password/${user._id}/${token}`
+    const passwordLink = `${process.env.CLIENT_SIDE_ADDRESS}/reset-password/${user._id}/${token}`
 
     try {
         await sendEmail(user.email, passwordLink)
